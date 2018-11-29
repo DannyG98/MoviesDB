@@ -31,6 +31,12 @@ def view_controller(window, table, state, query):
         cast_search(table, query)
     elif state == 'Movie By Distributor':
         movie_distributor_search(table, query)
+    elif state == 'Both Actor and Director':
+        convert_db(table, movieDB.bothActorAndDirector())
+    elif state == 'Find Person"s Awards':
+        convert_db(table, movieDB.findAwardsBy(query))
+    elif state == 'Find Movie"s Crew':
+        convert_db(table, movieDB.findCrewForMovie(query))
     else:
         window.destroy()
 
