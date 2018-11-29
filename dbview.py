@@ -30,12 +30,14 @@ def view_controller(window, table, state, query):
     elif state == 'Find Cast':
         cast_search(table, query)
     elif state == 'Movie By Distributor':
-        movie_distributor_search(table, query)
+        convert_db(table, movieDB.findMoviesDistributedBy(query))
+    elif state == 'Distributor By Movie':
+        convert_db(table, movieDB.findDistributorsForMovie(query))
     elif state == 'Both Actor and Director':
         convert_db(table, movieDB.bothActorAndDirector())
-    elif state == 'Find Person"s Awards':
+    elif state == 'Find Person\'s Awards':
         convert_db(table, movieDB.findAwardsBy(query))
-    elif state == 'Find Movie"s Crew':
+    elif state == 'Find Movie\'s Crew':
         convert_db(table, movieDB.findCrewForMovie(query))
     else:
         window.destroy()
@@ -79,7 +81,7 @@ def convert_db(table, db):
 
 def set_columns(table, columns):
     table['columns'] = columns
-    table.column('#0', anchor='center', width='30')
+    table.column('#0', anchor='center', width=30, stretch=1)
 
     for val in columns:
         table.heading(str(val), text=str(val))
@@ -91,8 +93,8 @@ def autosize_cols(table, columns):
     default_font = font.Font(font='TkDefaultFont')
 
     for x in range(len(columns)):
-        maxsize = 0
-        maxnum_size = 0;
+        maxsize = 100
+        maxnum_size = 30;
         for child in entries:
             # cellsize = len(str((table.item(child)['values'][x]))) * 8
             current_item = table.item(child)['values'][x]

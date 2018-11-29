@@ -15,7 +15,8 @@ class GUI:
 
         self.search_choices = ['All Movies', 'Movie By Name', 'Movie By Year',
                                'Movie By Genre', 'Find Cast', 'Movie By Distributor',
-                               'Both Actor and Director', 'Find Person"s Awards', 'Find Movie"s Crew']
+                               'Distributor By Movie', 'Both Actor and Director', 'Find Person\'s Awards',
+                               'Find Movie\'s Crew']
         self.drop_down_var = StringVar(self.root)
         self.drop_down = create_dropdown(self.root, self.mainframe, self.drop_down_var, choices=self.search_choices)
 
